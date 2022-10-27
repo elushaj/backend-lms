@@ -58,15 +58,21 @@ isAdmin: {
   type: Boolean,
   default: false
 },
-bookIssueInfo: [
+
+issue: [
   {
-    book_info: {
-      id: {
+
         type: mongoose.Schema.Types.ObjectId,
         ref: "Issue",
       },
-    },
-  },
+    
+  
+],
+books:[
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Book"
+  }
 ],
 
 joined: { type: Date, default: Date.now() },

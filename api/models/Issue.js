@@ -1,38 +1,30 @@
 import mongoose from "mongoose";
+
 const { Schema } = mongoose;
 
-const IssueSchema = new mongoose.Schema({
-  book_info : {
-    id : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Book', 
-    },
-    title : String,
-    author : String,
-    ISBN : String,
-    category : String,
-    stock : Number,
-    issueDate : {type : Date, default : Date.now()},
-    returnDate : {type : Date, default : Date.now() + 7*24*60*60*1000},
-    isRenewed : {type : Boolean, default : false},
-}, 
-
-user_id : {
-    id : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'User',
-    },
+const IssueSchema = new mongoose.Schema(
     
-    fullname : String,
-    surname : String,
-    email : String,
-},
-
- 
-
-  
-
-},{timestamps:true}
+        {
+            book: [{
+              type: mongoose.Schema.Types.ObjectId,
+              ref:"Book",
+              required: true,
+            } ] ,
+        
+        return:{
+type:Boolean,default:false
+        },
+            returnDate: { type: Date, default: Date.now() + 7 * 24 * 60 * 60 * 1000 },
+        
+            isRenewed: { type: Boolean, default: false },
+        
+            user: [{
+              type: mongoose.Schema.Types.ObjectId,
+              ref:"User",
+              required: true,
+            },
+        ],
+          },{timestamps:true}
 );
 
 export default mongoose.model('Issue',IssueSchema)

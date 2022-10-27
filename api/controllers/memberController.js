@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import { createError } from "../utils/error.js";
-
+import Book from "../models/Book.js";
+import Issue from "../models/Issue.js";
 export const getMember = async (req,res,next)=>{
 
   try {
@@ -28,3 +29,22 @@ export const getMember = async (req,res,next)=>{
           }
         }
   
+
+
+        export const getCounter=async (req, res, next) => {
+          const query ={isStaff:false,isAdmin:false}
+          
+     
+          try {
+            
+              const userCount = await User.countDocuments(query);
+              const bookCount = await Book.countDocuments();
+              const issueCount = await Issue.countDocuments();
+              res.status(200).json([
+            userCount,bookCount,issueCount
+            
+            ]  );
+          }   catch (err) {
+              next(err);
+            }
+          }

@@ -4,8 +4,10 @@ import mongoose from "mongoose";
 import authRoute from "./roots/auth.js"
 import booksRoute from "./roots/books.js"
 import usersRoute from "./roots/users.js"
+import issuesRoute from "./roots/issues.js"
 import membersRoute from "./roots/members.js"
 import cookieParser from "cookie-parser";
+import cors from "cors"
 const app = express();
 dotenv.config();
 const connect = async () => {
@@ -20,6 +22,7 @@ const connect = async () => {
 mongoose.connection.on('disconnected',()=>{console.log(" mongoDB Disconnected ")})
 
 //middleware methods
+app.use(cors())
 app.use(cookieParser())
 app.use(express.json())   
 
@@ -28,6 +31,7 @@ app.use("/api/auth",authRoute)
 app.use("/api/books",booksRoute)
 app.use("/api/users",usersRoute)
 app.use("/api/members",membersRoute)
+app.use("/api/issues",issuesRoute)
 
 app.use((err,req,res,next)=>{
   const errorStatus = err.status|| 500

@@ -38,3 +38,23 @@ export const getAllUsers = async (req,res,next)=>{
     next(err);
   }
 }
+
+
+export const getSearchUser = async (req,res,next)=>{
+try {
+  
+  const searchUser=await User.find({
+    "$or":[
+      {fullname:{$regex:req.params.key}},
+      {surname:{$regex:req.params.key}},
+      {username:{$regex:req.params.key}},
+      {email:{$regex:req.params.key}},
+    ]
+  }
+  )
+  res.status(200).json(searchUser)
+}
+catch(err){
+  next(err)
+}
+}

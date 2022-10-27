@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteUser, updateUser,getUser,getAllUsers } from "../controllers/userController.js";
+import { deleteUser, updateUser,getUser,getAllUsers,getSearchUser } from "../controllers/userController.js";
 import { verifyToken,verifyUser ,verifyAdmin, verifyStaff} from "../utils/verifyToken.js";
 const router = express.Router();
 
@@ -33,6 +33,6 @@ router.put('/:id',verifyAdmin,updateUser)
     router.get('/',verifyStaff,verifyAdmin,getAllUsers)
   
 
-
+router.get("/searchUser/:key",getSearchUser)
 
 export default router

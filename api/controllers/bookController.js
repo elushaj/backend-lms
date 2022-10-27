@@ -1,16 +1,36 @@
 import Book from "../models/Book.js";
-
+import { currentUser } from "../utils/verifyToken.js";
 export const createBook = async (req, res, next) => {
-  const newBook = new Book(req.body);
+
+  // const newBook = new Book(req.body);
+
 
   try {
-    const savedBook = await newBook.save();
-    res.status(200).json(savedBook);
+
+    const bookData={
+      title: req.body.title,
+      author: req.body.author,
+      ISBN: req.body.ISBN,
+      desc: req.body.description,
+      language: req.body.language,
+      published: req.body.published,
+      photo: req.body.photo,
+      stock: req.body.stock,
+      total: req.body.total,
+      category: req.body.category,
+  
+    }
+ 
+    const book = await Book.create(bookData)
+   
+
+
+ 
+    res.status(200).json({success:true,book});
   } catch (err) {
     next(err);
   }
-};
-
+}
 
   export const updateBook = async (req, res, next) => {
     const newBook = new Book(req.body);
@@ -58,24 +78,35 @@ export const deleteBook = async (req, res, next) => {
     }
   };
 
+  export const getSearchBooks= async (req, res, next) => {
+    try{
+      const book=await Book.find({
+        "$or":[
+          {title:{$regex:req.params.key}},
+          {author:{$regex:req.params.key}},
+          {category:{$regex:req.params.key}},
+        ]
+      })
+      res.status(200).json(book)
+    }
+    catch (err) {next(err)}
+  }
 
 
-  // exports.findBooks = async (req, res, next) => {
-  //   const filter=req.body.filter;
-  //   const value=req.body.searchName
+  export const getCountBooks=async (req, res, next) => {
+   
+    
 
-  //   if(value=="")
-  //   req.flash("error", "Search field is empty. Please fill the search field in order to get a result");
-  //   return res.redirect('back');
-  // }
-  // const searchObj = {};
-  // searchObj[filter] = value;
+    try {
+      
+        const booksCount = await Book.countDocuments();
+       
+        res.status(200).json(
+    booksCount
+      
+        );
+    }   catch (err) {
+        next(err);
+      }
+    }
 
-  // try{
-  //   const books=await Book.find(searchObj)
-
-  //  res.render("books",{books:books,filter:filter,value:value,user:req.user})
-  // }
-  // catch(err){
-  //   next(err)
-  // }
