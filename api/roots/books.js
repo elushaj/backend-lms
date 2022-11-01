@@ -1,5 +1,5 @@
 import express from "express";
-import { createBook, deleteBook, updateBook,getBook,getAllBooks,getSearchBooks} from "../controllers/bookController.js";
+import { createBook, deleteBook, updateBook,getBook,getAllBooks,getSearchBooks, bookPagination, getCategory} from "../controllers/bookController.js";
 import { verifyAdmin, verifyStaff} from "../utils/verifyToken.js";
 
 const router = express.Router();
@@ -26,5 +26,7 @@ router.put('/:id',verifyStaff,updateBook)
 
    router.get('/searchBooks/:key',getSearchBooks)
 
-  
+  router.get('/pagination',bookPagination)
+
+  router.get('/category',getCategory)
 export default router

@@ -1,17 +1,31 @@
 import React from "react";
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from '../../../datatablesource';
+import { userColumns } from '../../../datatablesource';
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import useFetch from "../../../hooks/useFetch";
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
 
+  // const handleDelete = (id) => {
+  //   setData(datas.filter((item) => item.id !== id));
+  // };
+
+
+  const {data,loading,error}=useFetch("/users")
+
+   const userRows = [
+    data.map((item) => (
+    {
+      id:item._id,
+      username: item.username,
+      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      status: "active",
+      email:item.email,
+      user: item.fullname
+    }))
+  ];
   const actionColumn = [
     {
       field: "action",
@@ -25,7 +39,7 @@ const Datatable = () => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              // onClick={() => handleDelete(params.row.id)}
             >
               Delete
             </div>
@@ -44,11 +58,20 @@ const Datatable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={   data.map((item) => (
+          {
+            id:item._id,
+            username: item.username,
+            img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            status: "active",
+            email:item.email,
+            user: item.fullname
+          }))}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
+        getRowId={row => row.id}
       />
     </div>
   );
