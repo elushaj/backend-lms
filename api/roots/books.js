@@ -1,32 +1,31 @@
 import express from "express";
-import { createBook, deleteBook, updateBook,getBook,getAllBooks,getSearchBooks, bookPagination, getCategory} from "../controllers/bookController.js";
-import { verifyAdmin, verifyStaff} from "../utils/verifyToken.js";
+import { createBook, deleteBook, updateBook,getBook,getAllBooks,getSearchBooks, bookPagination} from "../controllers/bookController.js";
+import { verifyAdmin} from "../utils/verifyToken.js";
 
 const router = express.Router();
 
 
 //Create
 
-router.post('/',verifyStaff,createBook)
+router.post('/createBook',verifyAdmin,createBook)
 
 
 //Update
 
-router.put('/:id',verifyStaff,updateBook)
+router.put('/:id',updateBook)
 
 
     //Delete
-    router.delete('/:id',verifyStaff,deleteBook)
+    router.delete('/:id',verifyAdmin,deleteBook)
 
     //Get
-    router.get('getBook/:id',getBook)
+    router.get('/:id',getBook)
 
     //Get all 
-    router.get('/',getAllBooks)
+    router.get('/allBooks/all',getAllBooks)
 
    router.get('/searchBooks/:key',getSearchBooks)
 
-  router.get('/pagination',bookPagination)
+  router.get('/',bookPagination)
 
-  router.get('/category',getCategory)
 export default router

@@ -1,9 +1,9 @@
 import User from "../models/User.js";
- const query ={isStaff:true}
+import Issue from "../models/Issue.js";
 export const updateUser = async (req,res,next)=>{
   try {
    
-    const updatedUser = await User.findByIdAndUpdate(query,
+    const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }
@@ -26,6 +26,12 @@ export const getUser = async (req,res,next)=>{
     const user = await User.findById(query,req.params.id);
     if(user.isStaff){res.status(200).json(user);}
     else{res.status(404).json("No user found");}
+    const issue=await Issue.find(_id=user.issue)
+    if(issue.returnDate>=Date.now()){
+user.notifcation.push({
+  message:`Please return the issued book `
+})
+    }
   } catch (err) {
     next(err);
   }

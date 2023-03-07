@@ -5,6 +5,7 @@ import Widget from "../../components/widgets/Widget";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import "./home.scss";
+import SearchWidget from "../../components/search/SearchWidget";
 const Home = () => {
   return (
     <div className="home">
@@ -18,8 +19,7 @@ const Home = () => {
         </div>
         <div className="charts">
       
-          <Chart/>
-
+<SearchWidget/>
         </div>
         
       </div>

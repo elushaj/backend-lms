@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-
+import mongoose from "mongoose"
+import mongooseDateFormat from "mongoose-date-format";
 const { Schema } = mongoose;
 
 const IssueSchema = new mongoose.Schema(
@@ -11,13 +11,12 @@ const IssueSchema = new mongoose.Schema(
               required: true,
             } ] ,
         
-        return:{
-type:Boolean,default:false
-        },
+       
             returnDate: { type: Date, default: Date.now() + 7 * 24 * 60 * 60 * 1000 },
-        
-            isRenewed: { type: Boolean, default: false },
-        
+         isReturned:{
+type:Boolean,default:false},
+        isRenewed: { type: Boolean, default: false },
+        issueDate:{type:Date, default: Date.now()},
             user: [{
               type: mongoose.Schema.Types.ObjectId,
               ref:"User",
@@ -26,5 +25,5 @@ type:Boolean,default:false
         ],
           },{timestamps:true}
 );
-
+IssueSchema.plugin(mongooseDateFormat)
 export default mongoose.model('Issue',IssueSchema)

@@ -1,6 +1,6 @@
 import express from "express";
 import { deleteUser, updateUser,getUser,getAllUsers,getSearchUser } from "../controllers/userController.js";
-import { verifyToken,verifyUser ,verifyAdmin, verifyStaff} from "../utils/verifyToken.js";
+import { verifyToken,verifyUser ,verifyAdmin} from "../utils/verifyToken.js";
 const router = express.Router();
 
 
@@ -27,10 +27,10 @@ router.put('/:id',verifyAdmin,updateUser)
     router.delete('/:id',verifyAdmin,deleteUser)
 
     //Get
-    router.get('/:id ',verifyStaff,verifyAdmin,getUser)
+    router.get('/:id ',verifyAdmin,getUser)
     
     //Get all 
-    router.get('/',verifyStaff,verifyAdmin,getAllUsers)
+    router.get('/',verifyAdmin,getAllUsers)
   
 
 router.get("/searchUser/:key",getSearchUser)

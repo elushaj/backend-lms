@@ -34,15 +34,7 @@ export const verifyAdmin = (req, res, next) => {
   });
 };
 
-export const verifyStaff = (req, res, next) => {
-  verifyToken(req, res,  () => {
-    if (req.user.isStaff||req.user.isAdmin) {
-    next();
-    } else {
-      return next(createError(403, "You are not authorized!"));
-    }
-  });
-};
+
 
 export const currentUser = (req, res, next) => {
   var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers['authorization'];

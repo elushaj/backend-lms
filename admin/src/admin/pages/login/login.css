@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Cuprum:wght@500&family=Montserrat:wght@200&display=swap");
+body {
+  font-family: "Montserrat";
+  background-color: rgba(165, 178, 171, 0.1);
+  font-weight: bold;
+}
+
+.login {
+  color: #3d5d52;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.loginBox {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: auto;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.loginForm {
+  display: block;
+  width: 300px;
+  padding: 30px;
+  padding-top: 25%;
+  padding-bottom: 20%;
+  text-align: center;
+}
+
+.loginForm p {
+  text-decoration: underline;
+}
+
+.loginForm p:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.emailBox, .passwordBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px;
+  margin-top: 20px;
+}
+
+.emailBox input, .passwordBox input {
+  color: black;
+  font-family: "Montserrat";
+  height: 38px;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.loginLogo {
+  position: absolute;
+  z-index: 1;
+  left: 32%;
+  bottom: 85%;
+}
+
+.loginLogo img {
+  width: 140px;
+}
+
+.iconlg {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  background-color: black;
+  color: white;
+  border-radius: 10%;
+}
+
+.loginBtn {
+  background-color: black;
+  font-family: "Montserrat";
+  position: absolute;
+  z-index: 1;
+  left: 20%;
+  top: 96%;
+  text-align: center;
+  width: 60%;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loginBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  padding-top: 8px;
+  color: rgba(255, 255, 255, 0.973);
+}
+
+.loginBtn:hover {
+  cursor: pointer;
+  background-color: white;
+  border: solid 1px black;
+}
+
+.loginBtn:hover button {
+  color: black;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+@media (max-height: 736px) {
+  .loginBox {
+    padding: 0;
+    background-color: transparent;
+  }
+  .loginLogo img {
+    display: none;
+  }
+}
+/*# sourceMappingURL=login.css.map */

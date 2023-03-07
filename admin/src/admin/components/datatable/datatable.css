@@ -1,0 +1,174 @@
+.datatable {
+  height: 600px;
+  padding: 20px;
+  overflow: scroll;
+}
+
+.datatable .datatableTitle {
+  width: 100%;
+  font-size: 24px;
+  color: gray;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.datatable .datatableTitle .link {
+  text-decoration: none;
+  color: green;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid green;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.datatable .cellWithImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.datatable .cellWithImg .cellImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 20px;
+}
+
+.datatable .cellWithStatus {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.datatable .cellWithStatus.active {
+  background-color: rgba(0, 128, 0, 0.05);
+  color: green;
+}
+
+.datatable .cellWithStatus.pending {
+  background-color: rgba(255, 217, 0, 0.05);
+  color: goldenrod;
+}
+
+.datatable .cellWithStatus.passive {
+  background-color: rgba(255, 0, 0, 0.05);
+  color: crimson;
+}
+
+.datatable tr {
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  min-height: 52px;
+  max-height: 52px;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.datatable .issue_row {
+  min-height: 80px !important;
+}
+
+.datatable td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  overflow: hidden;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.datatable .cellAction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+
+.datatable .cellAction .viewButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: darkblue;
+  border: 1px dotted rgba(0, 0, 139, 0.596);
+  cursor: pointer;
+}
+
+.datatable .cellAction .viewButton:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+.datatable .cellAction .deleteButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: crimson;
+  border: 1px dotted rgba(220, 20, 60, 0.6);
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.datatable .tableFooter {
+  background-color: #f1f1f1;
+  padding: 8px 0px;
+  width: 100%;
+  font-weight: 500;
+  text-align: left;
+  font-size: 16px;
+  color: #2c3e50;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.datatable .button {
+  border: none;
+  padding: 7px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.pagination {
+  text-align: center;
+}
+/*# sourceMappingURL=datatable.css.map */

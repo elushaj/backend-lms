@@ -1,0 +1,73 @@
+.widget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding: 10px;
+  -webkit-box-shadow: -10px 22px 47px -16px #3d3c3d;
+  box-shadow: -10px 22px 47px -16px #3d3c3d;
+  border-radius: 8px;
+  height: 120px;
+  justify-content: space-between;
+  max-width: 400px;
+  margin-right: auto;
+}
+
+.widget .left,
+.widget .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.widget .left .title,
+.widget .right .title {
+  font-weight: bold;
+  font-size: 14px;
+  color: gray;
+}
+
+.widget .left .counter,
+.widget .right .counter {
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.widget .left .link,
+.widget .right .link {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 12px;
+  border-bottom: 1px solid gray;
+}
+
+.widget .left .link:hover,
+.widget .right .link:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.widget .left .icon,
+.widget .right .icon {
+  font-size: 30px;
+  padding: 5px;
+  background-color: #cee4f7;
+  border-radius: 5px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  color: #0e0e94;
+}
+/*# sourceMappingURL=widget.css.map */

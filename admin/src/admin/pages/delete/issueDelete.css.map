@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAA;EACZ,MAAM,EAAE,KAAK;CAcZ;;AAfD,AAGI,YAHQ,CAGR,CAAC,CAAA;EACG,SAAS,EAAE,IAAI;CAClB;;AALL,AAMI,YANQ,CAMR,MAAM,CAAA;EAEF,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,gBAAgB,EAAC,WAAY;EAC7B,KAAK,EAAC,KAAK;EACX,SAAS,EAAE,IAAI;EACf,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "issueDelete.scss"
+    ],
+    "names": [],
+    "file": "issueDelete.css"
+}

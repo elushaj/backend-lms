@@ -1,0 +1,128 @@
+.srcwidget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding: 10px;
+  -webkit-box-shadow: -10px 22px 47px -16px #3d3c3d;
+  box-shadow: -10px 22px 47px -16px #3d3c3d;
+  border-radius: 8px;
+  background-color: #cee4f7;
+  height: 50px;
+  justify-content: space-between;
+  max-width: 400px;
+  margin-right: auto;
+  color: #0e0e94;
+}
+
+.srcwidget .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.srcwidget .left .title {
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.srcwidget .left .counter {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.srcwidget .left .link {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 12px;
+  border-bottom: 1px solid gray;
+}
+
+.srcwidget .left .link:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.srcwidget .left .icon {
+  font-size: 30px;
+  padding: 5px;
+  background-color: #cee4f7;
+  border-radius: 5px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  color: #0e0e94;
+}
+
+.srcwidget:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.content {
+  margin-top: 50px;
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+}
+
+.search-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+table {
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+}
+
+.srch-form {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.srch-form .srch-input {
+  width: 350px;
+}
+
+.srch-form .srch-button {
+  margin-left: 0 !important;
+}
+/*# sourceMappingURL=searchwidget.css.map */

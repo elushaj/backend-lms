@@ -1,0 +1,19 @@
+.pagination {
+  padding-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.pagination-btn {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  padding: 7px 15px;
+  border: none;
+  width: 35px;
+}
+
+.pagination button:disabled {
+  color: red;
+  cursor: not-allowed;
+}
+/*# sourceMappingURL=pagination.css.map */

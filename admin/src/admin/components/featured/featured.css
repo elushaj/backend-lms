@@ -1,0 +1,9 @@
+.featured {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  -webkit-box-shadow: -10px 22px 47px -16px #3d3c3d;
+  box-shadow: -10px 22px 47px -16px #3d3c3d;
+  padding: 10px;
+}
+/*# sourceMappingURL=featured.css.map */

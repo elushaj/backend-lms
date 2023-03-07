@@ -4,7 +4,8 @@ import { MdOutlineDashboard, MdNotificationsNone } from "react-icons/md";
 import { TbUsers, TbBooks, TbNews } from "react-icons/tb";
 import { RiLoginBoxLine, RiLogoutBoxRLine } from "react-icons/ri";
 import { GiOfficeChair } from "react-icons/gi";
-import { BiCalendar } from "react-icons/bi";
+import { BiCalendar,BiPlus ,BiBookAdd} from "react-icons/bi";
+import {BsPersonPlus } from "react-icons/bs";
 import { ImProfile } from "react-icons/im";
 import { HiLogout } from "react-icons/hi";
 
@@ -30,10 +31,10 @@ const SideBar = () => {
             </li>
           </Link>
           <p className="title">Lists</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <Link to="/members" style={{ textDecoration: "none" }}>
             <li>
               <TbUsers className="icon" />
-              <span>Users</span>
+              <span>Members</span>
             </li>
           </Link>
           <Link to="/books" style={{ textDecoration: "none" }}>
@@ -42,24 +43,34 @@ const SideBar = () => {
               <span>Books</span>
             </li>
           </Link>
-
-          <p className="title">Services</p>
-          <Link to="/returns" style={{ textDecoration: "none" }}>
+  <Link to="/issues" style={{ textDecoration: "none" }}>
             <li>
               <RiLoginBoxLine className="icon" />
-              <span>Returns</span>
+              <span>Issues</span>
             </li>
           </Link>
-          <li>
-            <RiLogoutBoxRLine className="icon" />
-            <span>Borrows</span>
-          </li>
-
-          <li>
-            <GiOfficeChair className="icon" />
-            <span>Halls</span>
-          </li>
-
+          <p className="title">Services</p>
+        
+        
+          <Link to="/issues/new" style={{ textDecoration: "none" }}>
+            <li>
+              <BiPlus className="icon" />
+              <span>Add Issues</span>
+            </li>
+          </Link>
+          
+          <Link to="/books/new" style={{ textDecoration: "none" }}>
+            <li>
+              <BiBookAdd className="icon" />
+              <span>Add Book</span>
+            </li>
+          </Link>
+          <Link to="/members/new" style={{ textDecoration: "none" }}>
+            <li>
+              <BsPersonPlus className="icon" />
+              <span>Add Members</span>
+            </li>
+          </Link>
           <p className="title">Events</p>
           <li>
             <TbNews className="icon" />

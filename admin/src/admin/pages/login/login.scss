@@ -119,7 +119,9 @@ left: 20%;
     width: 60%;
 height: 40px;
 
-  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   button{
     background-color: transparent;
     border: none;

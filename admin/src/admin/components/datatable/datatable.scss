@@ -1,7 +1,7 @@
 .datatable {
     height: 600px;
     padding: 20px;
-    
+    overflow: scroll;
     .datatableTitle{
       width: 100%;
       font-size: 24px;
@@ -53,6 +53,31 @@
         color: crimson;
       }
     }
+    tr{
+          color: rgba(0, 0, 0, 0.87);
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    min-height: 52px;
+    max-height: 52px;
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    align-items: center;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    }
+    .issue_row{
+      min-height: 80px !important;
+    }
+    td{
+      display: flex;
+      text-align: center;
+      overflow: hidden;
+      align-items: center;
+      justify-content: space-around;
+    }
   
     .cellAction {
       display: flex;
@@ -66,14 +91,45 @@
         border: 1px dotted rgba(0, 0, 139, 0.596);
         cursor: pointer;
       }
-      
+      .viewButton:hover{
+        background-color: darkblue;
+        color: white;
+      }
       .deleteButton {
         padding: 2px 5px;
         border-radius: 5px;
         color: crimson;
         border: 1px dotted rgba(220, 20, 60, 0.6);
         cursor: pointer;
+        background-color: transparent;
       }
+    }
+    .tableFooter {
+      background-color: #f1f1f1;
+      padding: 8px 0px;
+      width: 100%;
+      font-weight: 500;
+      text-align: left;
+      font-size: 16px;
+      color: #2c3e50;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .button {
+      border: none;
+      padding: 7px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 4px;
+      margin-left: 4px;
     }
   }
   
+  .pagination{
+
+    text-align: center;
+  }
