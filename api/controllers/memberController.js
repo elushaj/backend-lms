@@ -110,7 +110,7 @@ export const getMember = async (req,res,next)=>{
             const newRating = new Rating({ user, book, stars });
             try {
               await newRating.save();
-              res.status(201).send('Rating submitted successfully');
+              res.status(200).send('Rating submitted successfully');
             } catch (err) {
               res.status(400).send(err);
             }
@@ -119,20 +119,18 @@ export const getMember = async (req,res,next)=>{
 
    
 
-export const avgRate=async (req, res) => {
-  const { book } = req.query;
-  const books=await Book.find(book)
-  try {
-    const ratings = await Rating.find({ book }).select('stars');
-    const averageRating =
-    ratings.reduce((acc, cur) => acc + cur.stars, 0) / ratings.length;
-    res.status(200).send({ averageRating });
-
-
-
-    // await books.populate("rating")
-    // await books.save();
-  } catch (err) {
-    res.status(400).send(err);
-  }
-}
+          export const avgRate=async (req, res) => {
+            const { book } = req.query;
+            
+            try {
+              const ratings = await Rating.find({ book }).select('stars');
+              if (ratings.length === 0) {
+                res.status(404).send({ error: 'No ratings found for this book' });
+                return;
+              }
+              const averageRating = ratings.reduce((acc, cur) => acc + cur.stars, 0) / ratings.length;
+              res.status(200).send({ averageRating });
+            } catch (err) {
+              res.status(400).send(err);
+            }
+          }

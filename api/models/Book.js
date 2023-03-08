@@ -84,6 +84,15 @@ required:true  },
     type: mongoose.Schema.ObjectId,
     ref: "Issue",
   }],
+
+
+  ratings:[
+    {
+      star:Number,
+
+},
+],
+  totalrating:{type:String,default:0}
 });
 BookSchema.plugin(mongooseDateFormat)
 BookSchema.plugin(uniqueValidator, { message: "ISBN Number Already Exists" });
