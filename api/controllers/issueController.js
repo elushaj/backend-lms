@@ -32,15 +32,19 @@ await issue.populate("book", "title author ISBN stock")
 
       res.status(200).json({ success: true, data: issue });
 
-      const notification =user.notification
-      notification.push(
-        
-         `Book "${book.title}" "${book.author}" is issued till the date "${issue.returnDate}"`,
-
-      )
+    
 // 
     
-    } else {
+    }
+    else if(user.violationFlag=true){
+      res
+        .status(400)
+        .json({
+          success: false,
+          message: "You haven't return the overdue book. Please check the return date!",
+        });
+    }
+    else {
       
       res
         .status(400)
@@ -63,7 +67,8 @@ export const getIssues = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+}; 
+
 
 export const issuePagination = async (req, res) => {
   try {
@@ -134,10 +139,9 @@ export const returnBook = async (req, res, next) => {
     }
 
     await book.save();
-issue.returnDate===Date.now()- 7 * 24 * 60 * 60 * 1000
-if(issue.returnDate>=Date.now()){
-  user.violationFlag===true
-}
+
+user.violationFlag=false
+ await user.save()
 
     res.status(200).json({ success: true, message: "Book marked as returned" });issue.return==true;
   } catch (err) {
@@ -145,8 +149,21 @@ if(issue.returnDate>=Date.now()){
   }
 };
 
+// export const overdueBooks = await Issue.find({ returnDate: { $lt: new Date() }, returned: false });
 
-
+// // For each overdue book, retrieve the member's contact details and send a notification
+// for (const book of overdueBooks) {
+//   const member = await User.findById(book.memberId);
+//   if (member) {
+//     const message = `Dear ${member.name}, you have not returned the book '${book.title}' which was due on ${book.returnDate}. Please return the book at the earliest. Thanks!`;
+//     sendNotification(member.contactNumber, message);
+    
+//     // Update the book status to mark it as overdue and store the date when the notification was sent
+//     book.overdue = true;
+//     book.notificationSentAt = new Date();
+//     await book.save();
+//   }
+// }
 export const getSearchIssue = async (req,res,next)=>{
   try {
     
@@ -178,3 +195,33 @@ export const getSearchIssue = async (req,res,next)=>{
         next(err);
       }
     }
+
+
+    export const checkOverdue = async (req, res, next) => {
+      try {
+        const user = await User.findById(req.params.id).populate('issue');
+       
+        const currentDate = new Date();
+        let overdueBooks = [];
+    
+        for (const issue of user.issue) {
+          const returnDate = new Date(issue.returnDate);
+          const diffInMs = returnDate - currentDate;
+          const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+     const issueBook = await Issue.find(issue)
+          if (diffInDays < 0) {
+            overdueBooks.push(issueBook.book);
+            user.violationFlag=true
+            await user.save()
+          }
+        }
+    
+        if (overdueBooks.length > 0) {
+          // do something with the list of overdue books, such as sending a notification to the user or the librarian
+         {res.status(200).send("You have overdue books, check the returned date")}
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    

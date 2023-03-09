@@ -1,5 +1,5 @@
 import express from "express";
-import { createIssue,returnBook, getIssues, issuePagination, getSearchIssue,deleteIssue, getReturned } from "../controllers/issueController.js";
+import { createIssue,returnBook, getIssues, issuePagination, getSearchIssue,deleteIssue, getReturned, checkOverdue } from "../controllers/issueController.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 const router= express.Router()
 
@@ -12,4 +12,5 @@ router.get('/paginationIssues',issuePagination)
 router.get('/searchIssue/:key',getSearchIssue)
 router.delete('/:id',deleteIssue)
 router.get('/returned',getReturned)
+router.get('/overDue/:id',checkOverdue)
 export default router

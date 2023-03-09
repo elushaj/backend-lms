@@ -3,18 +3,14 @@ import { createError } from "../utils/error.js";
 import Book from "../models/Book.js";
 import Issue from "../models/Issue.js";
 import Rating from "../models/Rating.js";
+
 export const getMember = async (req,res,next)=>{
 
   try {
 
     const users = await User.findById(req.params.id).populate("issue","issueDate returnDate").populate("books","title author ISBN");
-    // const user_id = req.user._id;
- 
     const user= await User.findById(req.params.id)
-    // const userM=user.map(user.issue)
-    //   if (userM.issue.returnDate < Date.now()) {
-    //     userM.violationFlag = false;
-    //     userM.save();
+
     res.status(200).json(users); 
   } catch (err) {
     next(err);
