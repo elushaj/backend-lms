@@ -1,7 +1,7 @@
 import Issue from "../models/Issue.js";
 import User from "../models/User.js";
 import Book from "../models/Book.js";
-import Activity from "../models/Activity.js";
+
 
 export const createIssue = async (req, res, next) => {
   try {
@@ -36,7 +36,7 @@ await issue.populate("book", "title author ISBN stock")
 // 
     
     }
-    else if(user.violationFlag=true){
+    else if(user.violationFlag==true){
       res
         .status(400)
         .json({
@@ -44,7 +44,7 @@ await issue.populate("book", "title author ISBN stock")
           message: "You haven't return the overdue book. Please check the return date!",
         });
     }
-    else {
+    else if(user.issue.length == 3) {
       
       res
         .status(400)
@@ -225,3 +225,44 @@ export const getSearchIssue = async (req,res,next)=>{
       }
     }
     
+
+    export const notifyIssue = async (req, res, next) => {
+      try {
+        const user = await User.findById(req.params.id).populate('issue');
+       
+        const issueDate =  new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
+        ;
+        let overdueBooks = [];
+    
+        for (const issue of user.issue) {
+          const returnDate = new Date(issue.returnDate);
+          const diffInMs = returnDate - currentDate;
+          const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+     const issueBook = await Issue.find(issue)
+          if (diffInDays < 0) {
+            overdueBooks.push(issueBook.book);
+            user.violationFlag=true
+            await user.save()
+          }
+        }
+    
+        if (overdueBooks.length > 0) {
+        
+         {res.status(200).send("You have overdue books, check the returned date")}
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    
+    export const getIssue = async (req, res, next) => {
+      try {
+
+        // const user = await  User.findById(req.params.id)
+        const issue = await Issue.find({user:req.params.id }).populate("book","title author")
+        res.status(200).json(issue);
+        
+      } catch (err) {
+        next(err);
+      }
+    };

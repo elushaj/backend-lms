@@ -12,7 +12,7 @@ const IssueSchema = new mongoose.Schema(
             } ] ,
         
        
-            returnDate: { type: Date, default: Date.now() + 7 * 24 * 60 * 60 * 1000 },
+            returnDate: { type: Date, default: Date.now() + 14 * 24 * 60 * 60 * 1000 },
          isReturned:{
 type:Boolean,default:false},
         isRenewed: { type: Boolean, default: false },
