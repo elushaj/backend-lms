@@ -35,6 +35,7 @@ const NewUser = ({ inputs, title }) => {
       const newUser = {
         ...info,
         photo: url,
+        isAdmin: info.isAdmin === "true"
       };
       const headers={
         "Content-type": "application/json",

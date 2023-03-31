@@ -8,7 +8,7 @@ router.get('/',verifyAdmin,getMembers)
 
 router.get('/:id',getMember)
 router.get('/counter/countType',getCounter)
-router.put('/:id',updateMember)
+router.put('/:id',verifyAdmin,updateMember)
 router.post('/ratings',rateBook)
 router.get('/ratings/average',avgRate)
 export default router

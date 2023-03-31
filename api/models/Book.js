@@ -13,12 +13,7 @@ const BookSchema = new mongoose.Schema({
   author: {
     type: String,
     required: [true, "Author is required."],
-    validate: {
-      validator: function (author) {
-        return /^[a-zA-Z]+$/.test(author);
-      },
-      message: "Author field only alphabetic characters allowed",
-    },
+   
   },
   ISBN: {
     type: Number,
@@ -70,16 +65,17 @@ required:true  },
   total:{
     type: Number,
     required: true
+  }, 
+  category: {
+    type: String,
+    required: true,
   },
   user: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   }],
 
-  category: {
-    type: String,
-    required: true,
-  },
+ 
   issue: [{
     type: mongoose.Schema.ObjectId,
     ref: "Issue",

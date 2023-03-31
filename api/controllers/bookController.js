@@ -29,7 +29,7 @@ export const createBook = async (req, res, next) => {
       Object.keys(error.errors).forEach((key) => {
         errors[key] = error.errors[key].message;
       });
-shum 
+
       console.log(errors)
       return res.status(401).send(errors);
 
@@ -83,56 +83,7 @@ export const getAllBooks = async (req, res, next) => {
   }
 };
 
-export const getSearchBooks = async (req, res, next) => {
-  try {
-    const book = await Book.find({
-      $or: [
-        { title: { $regex: req.params.key } },
-        { author: { $regex: req.params.key } },
-        { category: { $regex: req.params.key } },
-      ],
-    });
-    res.status(200).json(book);
-//     const { q } = req.query;
-// const book = await Book.find()
-//     const keys = ["title", "author", "category"];
-//     let query = Book.find();
 
-//     const page = parseInt(req.query.page) || 1;
-//     const pageSize = parseInt(req.query.limit) || 8;
-//     const skip = (page - 1) * pageSize;
-//     const total = await Book.countDocuments();
-
-//     const pages = Math.ceil(total / pageSize);
-
-//     query = query.skip(skip).limit(pageSize);
-
-    // if (page > pages) {
-    //   return res.status(404).json({
-    //     status: "fail",
-    //     message: "No page found",
-    //   });
-    // }
-
-    // const result = await query;
-
-    // const search = (data) => {
-    //   return data.filter((item) =>
-    //     keys.some((key) => item[key].toLowerCase().includes(q))
-    //   );
-    // };
-  
-    // q ? res.json(search(book)) : res.status(200).json({
-    //   status: "success",
-    //   count: result.length,
-    //   page,
-    //   pages,
-    //   data: result,
-    // })
-   } catch (err) {
-    next(err);
-  }
-};
 
 export const getCountBooks = async (req, res, next) => {
   try {
@@ -146,16 +97,13 @@ export const getCountBooks = async (req, res, next) => {
 
 export const bookPagination = async (req, res) => {
   try {
-    
     let query = Book.find();
-
     const page = parseInt(req.query.page) || 1;
     const pageSize = parseInt(req.query.limit) || 8;
     const skip = (page - 1) * pageSize;
     const total = await Book.countDocuments();
-
     const pages = Math.ceil(total / pageSize);
-
+    
     query = query.skip(skip).limit(pageSize);
 
     if (page > pages) {
@@ -183,18 +131,19 @@ export const bookPagination = async (req, res) => {
   }
 };
 
-// export const bookPagination = async (req, res, next) => {
-//   try {
-//     const PAGE_SIZE = 6;
-//     const page = parseInt(req.query.page || "0");
-//     const total = await Book.countDocuments();
 
-//     const books = await Book.find()
-//       .limit(PAGE_SIZE)
-//       .skip(PAGE_SIZE * page);
-//     const totalPages = Math.ceil(total / PAGE_SIZE);
-//     res.status(200).json([totalPages, books]);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+export const getSearchBooks = async (req, res, next) => {
+  try {
+    const book = await Book.find({
+      $or: [
+        { title: { $regex: req.params.key } },
+        { author: { $regex: req.params.key } },
+        { category: { $regex: req.params.key } },
+      ],
+    });
+    res.status(200).json(book);
+
+   } catch (err) {
+    next(err);
+  }
+};

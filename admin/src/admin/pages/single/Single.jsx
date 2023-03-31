@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Table from "../../components/table/Table";
 import EditUser from "../edit/EditUser";
 import axios from "axios";
+import Notification from "../../components/notification/Notification";
 const Single = ({params}) => {
   const location = useLocation();
   const [list, setList] = useState();
@@ -89,6 +90,7 @@ alert("Book marked as returned")
                 </div>
               </div>: 'No data found'
           }  </div>
+          
           </div>
           <div className="right">
           <table className="datatable">
